@@ -26,8 +26,15 @@
       <button v-on:click="reduce">Reduce</button>
       <br><br>
       <button v-on:click="addn(4)">Add+n</button>
-      <button v-on:click="reducen(3)">Reduce-n</button>
+      <button v-on:click.right="reducen(3)">Reduce-n</button>
+      <p v-once>Starting Counter: {{ counter }}</p>
       <p>Result: {{ counter }}</p>
+      <input type="text" v-on:input="setName($event,'Park')" v-on:keyup.enter="confirmInput">
+      <p>Your Name : {{confirmedName}}</p>
+      <form v-on:submit.prevent="submitForm">
+        <input type="text" >
+        <button>Sign Up</button>
+      </form>
     </section>
   </body>
 </html>
