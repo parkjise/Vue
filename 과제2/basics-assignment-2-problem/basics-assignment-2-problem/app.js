@@ -7,7 +7,6 @@ const app = Vue.createApp({
     }
   },
   methods : {
-
     alertMsg(e){
       alert('test1111')
     },
