@@ -1,71 +1,75 @@
 <template>
-  <li>
-    <h2>{{ name }} {{ isFavorite ? "(Favorite)" : "" }}</h2>
-    <button @click="toggleFavorite">Toggle Favorite</button>
-    <button @click="toggleDetails">
-      {{ detailsAreVisible ? "Hide" : "Show" }}
-    </button>
-    <ul v-if="detailsAreVisible">
-      <li><strong>Phone : </strong>{{ phoneNumber }}</li>
-      <li><strong>Email : </strong>{{ emailAddress }}</li>
-      <li>1</li>
-    </ul>
-  </li>
+	<li>
+		<h2>{{ name }} {{ isFavorite ? "(Favorite)" : "" }}</h2>
+		<button @click="toggleFavorite">Toggle Favorite</button>
+		<button @click="toggleDetails">
+			{{ detailsAreVisible ? "Hide" : "Show" }}
+		</button>
+		<ul v-if="detailsAreVisible">
+			<li><strong>Phone : </strong>{{ phoneNumber }}</li>
+			<li><strong>Email : </strong>{{ emailAddress }}</li>
+			<li>1</li>
+		</ul>
+		<button @click="$emit('delete', id)">Delete</button>
+	</li>
 </template>
 <script>
 export default {
-  // props: ["name", "phoneNumber", "emailAddress", "isFavorite"],
-  props: {
-    id: {
-      type: String,
-      required: true,
-    },
-    name: {
-      type: String,
-      required: true,
-    },
-    phoneNumber: {
-      type: String,
-      required: true,
-    },
-    emailAddress: {
-      type: String,
-      required: true,
-    },
-    isFavorite: {
-      type: Boolean,
-      required: false,
-      default: false,
-      // validator: function (value) {
-      //   return value === "1" || value === "0";
-      // },
-    },
-  },
-  // emits: ["toggle-Favorite"],
-  emits: {
-    "toggle-Favorite": function (id) {
-      if (id) {
-        return true;
-      } else {
-        console.warn("id is missing!");
-        return false;
-      }
-    },
-  },
-  data() {
-    return {
-      detailsAreVisible: false,
-    };
-  },
-  methods: {
-    toggleDetails() {
-      this.detailsAreVisible = !this.detailsAreVisible;
-    },
-    toggleFavorite() {
-      // this.firendsIsFavorite = !this.firendsIsFavorite;
-      this.$emit("toggle-Favorite", this.id);
-    },
-  },
+	// props: ["name", "phoneNumber", "emailAddress", "isFavorite"],
+	props: {
+		id: {
+			type: String,
+			required: true,
+		},
+		name: {
+			type: String,
+			required: true,
+		},
+		phoneNumber: {
+			type: String,
+			required: true,
+		},
+		emailAddress: {
+			type: String,
+			required: true,
+		},
+		isFavorite: {
+			type: Boolean,
+			required: false,
+			default: false,
+			// validator: function (value) {
+			//   return value === "1" || value === "0";
+			// },
+		},
+	},
+	emits: ["toggle-Favorite", "delete"],
+	// emits: {
+	// 	"toggle-Favorite": function (id) {
+	// 		if (id) {
+	// 			return true;
+	// 		} else {
+	// 			console.warn("id is missing!");
+	// 			return false;
+	// 		}
+	// 	},
+	// },
+	data() {
+		return {
+			detailsAreVisible: false,
+		};
+	},
+	methods: {
+		toggleDetails() {
+			this.detailsAreVisible = !this.detailsAreVisible;
+		},
+		toggleFavorite() {
+			// this.firendsIsFavorite = !this.firendsIsFavorite;
+			this.$emit("toggle-Favorite", this.id);
+		},
+		deleteFriend() {
+			this.$emit("delete", this.id);
+		},
+	},
 };
 </script>
 
