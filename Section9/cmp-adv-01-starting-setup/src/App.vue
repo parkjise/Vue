@@ -19,6 +19,7 @@
 		<keep-alive>
 			<component :is="selsectedComponent"></component>
 		</keep-alive>
+		<toggle-btn></toggle-btn>
 	</div>
 </template>
 
@@ -28,7 +29,8 @@ import BadgeList from "./components/BadgeList.vue";
 import UserInfo from "./components/UserInfo.vue";
 import CourseGoals from "./components/CourseGoals.vue";
 import ManageGoals from "./components/ManageGoals.vue";
-import ActiveGoals from "./components/ActiveGoals.vue"
+import ActiveGoals from "./components/ActiveGoals.vue";
+import ToggleBtn from "./components/ToggleBtn.vue";
 export default {
 	components: {
 		TheHeader,
@@ -36,7 +38,8 @@ export default {
 		UserInfo,
 		CourseGoals,
 		ManageGoals,
-		ActiveGoals
+		ActiveGoals,
+		ToggleBtn,
 	},
 	data() {
 		return {
@@ -45,14 +48,14 @@ export default {
 				description: "Site owner and admin",
 				role: "admin",
 			},
-			selsectedComponent:"active-goals"
+			selsectedComponent: "active-goals",
 		};
 	},
-	methods:{
-		setSelectedComponent(cmp){
-			this.selsectedComponent = cmp
-		}
-	}
+	methods: {
+		setSelectedComponent(cmp) {
+			this.selsectedComponent = cmp;
+		},
+	},
 };
 </script>
 
