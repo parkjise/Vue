@@ -1,47 +1,35 @@
 <template>
   <div>
-    <h2>11111</h2>
-    <ul>
-      <learning-resource v-for="res in stroedResources" :key="res.id"
-        :title="res.title"
-        :description="res.description"
-        :link="res.link"
-      >
-
-      </learning-resource>
-    </ul>
+    <the-header title="Rember Me"></the-header>
+    <the-resource></the-resource>
   </div>
 </template>
 
 <script>
-  import LearningResource from './components/learning-resources/LearningResource.vue'
-  export default{
-    components:{
-      LearningResource
-    },
-    data(){
-      return{
-        stroedResources:[
-          {
-            id:'official-guide',
-            title:'Official Guide',
-            description:'The official Vue.js',
-            link:'https://vuejs.org'
-          },
-          {
-            id:'Google',
-            title:'Official Guide',
-            description:'The official Vue.js',
-            link:'https://google.com'
-          },
-          {
-            id:'Naver',
-            title:'Official Guide',
-            description:'The official Vue.js',
-            link:'https://naver.com'
-          },
-        ]
-      }
-    }
-  }
+import TheHeader from './components/layouts/TheHeader.vue';
+import TheResource from './components/learning-resources/TheResource.vue';
+export default {
+  components: {
+    TheHeader,
+    TheResource,
+  },
+  data() {
+    return {};
+  },
+};
 </script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  margin: 0;
+}
+</style>
